@@ -82,6 +82,8 @@ class FlanXmlParser:
             self.parse_vuln(app_name, script_table['elem'])
 
     def parse_port(self, ip_addr: str, port: Dict[str, Any]):
+        if port['state']['@state'] == 'filtered':
+            return
         if port['state']['@state'] == 'closed':
             return
 
